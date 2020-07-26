@@ -35,7 +35,7 @@ You can buy the smart dehumidifier appliance (WiFi version) on Amazon (the two l
 
 ## Activate midea_dehumidifier custom integrations on your HA's configuration yaml file**
 
-**Step 1: Add the following section in your ``configuration.yaml``
+Add the following section in your ``configuration.yaml`` & restart HA
 ```
 midea_dehumidifier:
   username: user@example.com
@@ -49,20 +49,6 @@ midea_dehumi:
   username: user@example.com
   sha256password: cf76d55503cdee3....
 ```
-**Step 2: Activate DEBUG-level logging (optional)**
-
-It is highly suggested to activate DEBUG-level logging for the three components the midea_dehumi platform consists of. This let you perform troubleshooting analysis if the component doesn't work as expected.
-```
-logger:
-  default: info
-  logs:
-    custom_components.midea_dehumi: debug
-    custom_components.climate.midea_dehumi: debug
-    custom_components.sensor.midea_dehumi: debug
-```
-**Step 3: Restart HA**
-
-You can restart HA by using one of your preferred method (e.g. using restart button on Settings>General>Server Management og HA's Web dashboard).
 
 If everything is ok, you will find the following two new entities in your HA dashboard:
 
