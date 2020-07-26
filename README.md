@@ -1,6 +1,5 @@
 # Home Assistant Custom Integration for EVA II PRO WiFi Smart Dehumidifier appliance by Midea/Inventor.
 
-# Library for EVA II PRO WiFi Smart Dehumidifier appliance
 [![HitCount](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier.svg)](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5E7ULVFGCGKU2&source=url)
 
