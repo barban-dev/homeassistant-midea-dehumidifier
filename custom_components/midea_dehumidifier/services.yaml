@@ -1,0 +1,31 @@
+# Describes the format for available midea_dehumidifier services
+
+set_fan_speed:
+  description: Set fan speed for midea_dehumidifier device.
+  fields:
+    entity_id:
+      description: Name of entity to change.
+      example: 'midea_dehumidifier.17592186063322'
+    fan_speed:
+      description: New fan speed (Silent/Medium/High)
+      example: 'Silent'
+
+set_ion_state:
+  description: Set ion state for midea_dehumidifier device.
+  fields:
+    entity_id:
+      description: Name of entity to change.
+      example: 'midea_dehumidifier.17592186063322'
+    ion_state:
+      description: 0/1 state
+      example: 1
+
+set_mode:
+  description: Set mode for midea_dehumidifier device.
+  fields:
+    entity_id:
+      description: Name of entity to change.
+      example: 'midea_dehumidifier.17592186063322'
+    mode:
+      description: New mode (Target_humidity, Continuos, Smart, Dryer)
+      example: 'Target_humidity'
