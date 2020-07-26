@@ -1,0 +1,6 @@
+{
+   "name": "EVA II PRO WiFi Midea Inventor Dehumidifier custom integration",
+   "domains": "midea_dehumidifier",
+   "homeassistant": "0.96.0",
+   "iot_class": "Cloud Polling"
+}
