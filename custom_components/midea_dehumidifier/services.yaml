@@ -5,7 +5,7 @@ set_fan_speed:
   fields:
     entity_id:
       description: Name of entity to change.
-      example: 'midea_dehumidifier.17592186063322'
+      example: 'midea_dehumidifier.12345678901234'
     fan_speed:
       description: New fan speed (Silent/Medium/High)
       example: 'Silent'
@@ -15,7 +15,7 @@ set_ion_state:
   fields:
     entity_id:
       description: Name of entity to change.
-      example: 'midea_dehumidifier.17592186063322'
+      example: 'midea_dehumidifier.12345678901234'
     ion_state:
       description: 0/1 state
       example: 1
@@ -25,7 +25,7 @@ set_mode:
   fields:
     entity_id:
       description: Name of entity to change.
-      example: 'midea_dehumidifier.17592186063322'
+      example: 'midea_dehumidifier.12345678901234'
     mode:
       description: New mode (Target_humidity, Continuos, Smart, Dryer)
       example: 'Target_humidity'
