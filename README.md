@@ -28,9 +28,10 @@ You can buy the smart dehumidifier appliance (WiFi version) on Amazon (the two l
 4. Activate midea_dehumidifier custom integration on your HA's configuration yaml file (see instructions below)
 
 ### Manual
-1. Clone this repo
-2. Copy the `custom_components/midea_dehumidifier` folder into your HA's `custom_components` folder
-3. Activate midea_dehumidifier custom integration on your HA's configuration yaml file (see instructions below)
+1. Update HomeAssistant to version 0.96.0 or newer
+2. Clone this repo
+3. Copy the `custom_components/midea_dehumidifier` folder into your HA's `custom_components` folder
+4. Activate midea_dehumidifier custom integration on your HA's configuration yaml file (see instructions below)
 
 
 ## Activate midea_dehumidifier custom integrations on your HA's configuration yaml file**
@@ -56,6 +57,109 @@ If everything is ok, you will find the following two new entities in your HA das
 * **sensor.midea_dehumidifier_*[Device_ID]*_humidity**
 
 By means of the humidifier entity, you can control your appliance whereas the sensor reports the detected current humidity on your environment.
+
+## Lovelace card for midea_dehumidifier entity
+
+Add the following part of code to have a lovelace card representing your device and able to control all its features:
+
+configuration.yaml
+```
+input_select:
+  dehumidifier_fan_mode:
+    name: "Fan Mode"
+    options:
+      - Silent
+      - Medium
+      - High
+    icon: "mdi:animation-outline"
+  dehumidifier_modes:
+    name: "Modes"
+    options:
+      - Target_humidity
+      - Continuos
+      - Smart
+      - Dryer
+    icon: "mdi:animation-outline"
+
+sensor:
+  - platform: template
+    sensors:
+      midea_current_humidity:
+        friendly_name: "midea_current_humidity"
+        value_template: "{{ state_attr('humidifier.midea_dehumidifier_12345678901234', 'current_humidity') }}"
+        unit_of_measurement: "%"
+      midea_target_humidity:
+        friendly_name: "midea_target_humidity"
+        value_template: "{{ state_attr('humidifier.midea_dehumidifier_12345678901234', 'humidity') }}"
+        unit_of_measurement: "%"
+```
+
+automations.yaml
+```
+- alias: input_select.dehumidifier_fan_mode change
+  trigger:
+    entity_id: input_select.dehumidifier_fan_mode
+    platform: state
+  action:
+    service: midea_dehumidifier.set_fan_speed
+    data_template:
+      entity_id: humidifier.midea_dehumidifier_17592186063322
+      fan_speed: '{{ states.input_select.dehumidifier_fan_mode.state }}'
+###
+- alias: MideaDehumidifier fan speed change
+  trigger:
+    entity_id: humidifier.midea_dehumidifier_17592186063322
+    platform: state
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.dehumidifier_fan_mode
+      option: '{{ states.humidifier.midea_dehumidifier_17592186063322.attributes.fan_speed_mode }}'
+###
+- alias: Set input_select.dehumidifier_fan_mode options to 'High' when state of device change to Dryer
+  trigger:
+    platform: template
+    value_template: "{% if is_state('input_select.dehumidifier_modes', 'Dryer') %}true{% endif %}"
+  action:
+    service: input_select.set_options
+    data_template:
+      entity_id: input_select.dehumidifier_fan_mode
+      options: 
+        - 'High'
+- alias: Revert back input_select.dehumidifier_fan_mode options when state of device change to not Dryer
+  trigger:
+    platform: template
+    value_template: "{% if not is_state('input_select.dehumidifier_modes', 'Dryer') %}true{% endif %}"
+  action:
+    service: input_select.set_options
+    data_template:
+      entity_id: input_select.dehumidifier_fan_mode
+      options:
+        - 'Silent'
+        - 'medium'
+        - 'High'
+######
+- alias: input_select.dehumidifier_modes change
+  trigger:
+    entity_id: input_select.dehumidifier_modes
+    platform: state
+  action:
+    service: midea_dehumidifier.set_mode
+    data_template:
+      entity_id: humidifier.midea_dehumidifier_12345678901234
+      mode: '{{ states.input_select.dehumidifier_modes.state }}'
+###
+- alias: MideaDehumidifier mode change
+  trigger:
+    entity_id: humidifier.midea_dehumidifier_12345678901234
+    platform: state
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.dehumidifier_modes
+      option: '{{ states.humidifier.midea_dehumidifier_12345678901234.attributes.mode }}'
+```
+
 
 
 ## Installation Troubleshooting
