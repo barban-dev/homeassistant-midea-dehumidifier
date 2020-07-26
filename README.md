@@ -65,7 +65,7 @@ After installation, final result should look similar to this:
 \\<ha_ip_address>
     └── config
         ├── custom_components
-        │   ├── midea_dehumidifier
+        │   └── midea_dehumidifier
         │       ├── __init__.py
         │       ├── humidifier.py
         │       ├── manifest.json
