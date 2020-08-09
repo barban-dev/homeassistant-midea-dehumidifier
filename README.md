@@ -60,7 +60,7 @@ By means of the humidifier entity, you can control your appliance whereas the se
 
 ## Lovelace card for midea_dehumidifier entity
 
-Add the following part of code to have a lovelace card representing your device and able to control all its features:
+Add the following part of code to have a lovelace card representing your device and able to control all its features (change "12345678901234" with your device's ID):
 
 configuration.yaml
 ```
