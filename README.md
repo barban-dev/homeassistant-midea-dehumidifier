@@ -34,7 +34,7 @@ You can buy the smart dehumidifier appliance (WiFi version) on Amazon (the two l
 4. Activate midea_dehumidifier custom integration on your HA's configuration yaml file (see instructions below)
 
 
-## Activate midea_dehumidifier custom integrations on your HA's configuration yaml file**
+## Activate midea_dehumidifier custom integrations
 
 Add the following section in your ``configuration.yaml`` & restart HA (use the same username and password of your INVmate II App):
 ```
