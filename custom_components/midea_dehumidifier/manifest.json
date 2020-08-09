@@ -4,5 +4,6 @@
   "documentation": "https://github.com/barban-dev/homeassistant-midea-dehumidifier/blob/master/README.md",
   "dependencies": [],
   "codeowners": ["@barban-dev"],
-  "requirements": ["midea-inventor-lib==1.0.4"]
+  "requirements": ["midea-inventor-lib==1.0.4"],
+  "homeassistant": "0.96.0"
 }
