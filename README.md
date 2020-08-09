@@ -3,6 +3,7 @@
 
 [![HitCount](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier.svg)](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5E7ULVFGCGKU2&source=url)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
 
 Author: Andrea Barbaresi =2020=
