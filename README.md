@@ -103,18 +103,18 @@ automations.yaml
   action:
     service: midea_dehumidifier.set_fan_speed
     data_template:
-      entity_id: humidifier.midea_dehumidifier_17592186063322
+      entity_id: humidifier.midea_dehumidifier_12345678901234
       fan_speed: '{{ states.input_select.dehumidifier_fan_mode.state }}'
 ###
 - alias: MideaDehumidifier fan speed change
   trigger:
-    entity_id: humidifier.midea_dehumidifier_17592186063322
+    entity_id: humidifier.midea_dehumidifier_12345678901234
     platform: state
   action:
     service: input_select.select_option
     data_template:
       entity_id: input_select.dehumidifier_fan_mode
-      option: '{{ states.humidifier.midea_dehumidifier_17592186063322.attributes.fan_speed_mode }}'
+      option: '{{ states.humidifier.midea_dehumidifier_12345678901234.attributes.fan_speed_mode }}'
 ###
 - alias: Set input_select.dehumidifier_fan_mode options to 'High' when state of device change to Dryer
   trigger:
