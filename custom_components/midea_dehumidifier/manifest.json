@@ -5,6 +5,5 @@
   "issue_tracker": "https://github.com/barban-dev/homeassistant-midea-dehumidifier/issues",
   "dependencies": [],
   "codeowners": ["@barban-dev"],
-  "requirements": ["midea-inventor-lib==1.0.4"],
-  "homeassistant": "0.96.0"
+  "requirements": ["midea-inventor-lib==1.0.4"]
 }
