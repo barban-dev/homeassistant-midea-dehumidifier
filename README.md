@@ -13,14 +13,17 @@ Author: Andrea Barbaresi =2020=
 Licence: GPLv3
 
 This repo contains a Home Assistant custom integration for EVA II PRO WiFi Smart Dehumidifier appliance by Midea/Inventor.
+[NEWS!] It has been reported that the custom integration can work also with **Comfee MDDP-50DEN7** appliance [/NEWS!] 
 
-This custom component is baded on python library [***midea_inventor_lib***.](https://github.com/barban-dev/midea_inventor_dehumidifier): see library's readme and prerequisites to be able to control your device on Home Assistant.
+This custom component is based on python library [***midea_inventor_lib***.](https://github.com/barban-dev/midea_inventor_dehumidifier): see library's readme and prerequisites to be able to control your device on Home Assistant.
 
 Info about the dehumidifier appliance can be found [here.](https://www.inventorappliances.com/dehumidifiers/eva-ii-pro-wi-fi-20l)
 
-You can buy the smart dehumidifier appliance (WiFi version) on Amazon (the two links below contain my referral code):
-* [Amazon.co.uk](https://www.amazon.co.uk/gp/product/B07665CCSM/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=barban0d-21&creative=6738&linkCode=as2&creativeASIN=B07665CCSM&linkId=a7408b12a09679586e1816acc3c9d74b)
-* [Amazon.it](https://www.amazon.it/gp/product/B075486X31/ref=as_li_tl?ie=UTF8&camp=3414&creative=21718&creativeASIN=B075486X31&linkCode=as2&tag=barban03-21&linkId=33e8ff818aaa4b45f0c320e6661773b2)
+You can buy Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon (the two links below contain my referral code):
+* [Inventor Eva II PRO WiFi on Amazon.it](https://amzn.to/2RsIQMx)
+* [Comfee MDDP-50DEN7 on Amazon.it](https://amzn.to/2RsIQMx)
+
+
 
 ## Installation instruction
 
