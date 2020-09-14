@@ -1,5 +1,5 @@
 [<img src = "https://github.com/barban-dev/homeassistant-midea-dehumidifier/blob/master/images/ha-logo.png?raw=true" height = "100">](https://www.home-assistant.io/) 
-# Home Assistant Custom Integration for EVA II PRO WiFi Smart Dehumidifier appliance by Midea/Inventor.
+# Home Assistant Custom Integration for Midea dehumidifiers (Inventor EVA II PRO WiFi / Comfee MDDP-50DEN7 appliances).
 
 [![HitCount](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier.svg)](http://hits.dwyl.com/barban_dev/homeassistant_midea_dehumidifier)
 [![HitCount](http://hits.dwyl.com/barban-dev/homeassistant-midea-dehumidifier.svg)](http://hits.dwyl.com/barban-dev/homeassistant-midea-dehumidifier)
@@ -27,6 +27,11 @@ You can buy Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amaz
 * [Inventor Eva II PRO WiFi on Amazon.de](https://amzn.to/2ZC4GBS)
 * [Comfee MDDP-50DEN7 on Amazon.de](https://amzn.to/3kn3Elj)
 
+* [Inventor Eva II PRO WiFi on Amazon.es](https://amzn.to/3klioB9)
+* [Comfee MDDP-50DEN7 on Amazon.es](https://amzn.to/2FDc34I)
+
+* [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3klHdgh)
+* [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/2FlQoi1)
 
 
 ## Installation instruction
