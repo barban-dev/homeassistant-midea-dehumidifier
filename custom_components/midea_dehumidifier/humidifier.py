@@ -3,7 +3,7 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 import logging
 from typing import List, Optional
@@ -61,10 +61,6 @@ _LOGGER = logging.getLogger(__name__)
 
 #SUPPORT_FLAGS = 0
 SUPPORT_FLAGS = SUPPORT_MODES
-
-ATTR_DEHUMI_ION = "dehumi_ion"
-ATTR_DEHUMI_MODE = "dehumi_mode"
-ATTR_DEHUMI_FAN_SPEED = "dehumi_fan_speed"
 
 #TODO: in midea_dehumi python lib the range 30-70 is hard coded (fix it)
 MIN_HUMITIDY = 35
@@ -194,6 +190,15 @@ class MideaDehumidifierDevice(HumidifierEntity):
         #else:
         #    _LOGGER.error("midea_dehumidifier: get_device_status error")
 
+    @property
+    def unique_id(self):
+        """Return the unique id."""
+        return self._unique_id
+
+    @property
+    def name(self):
+        """Return the name of the humidity device."""
+        return self._name
 
     @property
     def supported_features(self):
@@ -205,11 +210,6 @@ class MideaDehumidifierDevice(HumidifierEntity):
         """Return the polling state."""
         #get device's status by polling it: Midea Web API lacks of notification capability
         return True
-
-    @property
-    def name(self):
-        """Return the name of the humidity device."""
-        return self._name
 
     @property
     def target_humidity(self):
