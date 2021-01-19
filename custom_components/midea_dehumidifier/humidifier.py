@@ -3,7 +3,7 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.0.1'
+VERSION = '1.0.2'
 
 import logging
 from typing import List, Optional
@@ -75,16 +75,16 @@ DEHUMI_FAN_SPEED_LIST = [ 'Silent', 'Medium', 'High' ]
 
 #States Attributes
 ATTR_ION_SET_SWITCH = "ion"
-#ATTR_MODE = "mode"
 ATTR_FAN_SPEED_MODE = "fan_speed_mode"
-#ATTR_FAN_SPEED = "fan_speed"
 ATTR_CURRRENT_HUMIDITY = "current_humidity"
+ATTR_TANK = "tank_show"
 PROP_TO_ATTR = {
     "ionSetSwitch": ATTR_ION_SET_SWITCH,
 	"mode": ATTR_MODE,
     "windSpeedMode": ATTR_FAN_SPEED_MODE,
     "windSpeed": ATTR_FAN_SPEED,
 	"current_humidity": ATTR_CURRRENT_HUMIDITY,
+        "tank_show": ATTR_TANK,	
 }
 
 
@@ -177,6 +177,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
         self._tankShow = False
         self._dryClothesSetSwitch = None
         self._upanddownSwing = None
+        self._tankShow = False
 
         self._device_class = DEVICE_CLASS_DEHUMIDIFIER
 
@@ -262,6 +263,11 @@ class MideaDehumidifierDevice(HumidifierEntity):
     def max_humidity(self):
         """Return the max humidity set."""
         return 85
+
+    @property
+    def tank_show(self):
+        """Return the tank status """
+        return self._tankShow
 
     @property
     def device_state_attributes(self):
@@ -431,6 +437,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
             self._tankShow = self._client.deviceStatus.tankShow
             self._dryClothesSetSwitch = self._client.deviceStatus.dryClothesSetSwitch
             self._upAndDownSwing = self._client.deviceStatus.upAndDownSwing
+            self._tankShow = self._client.deviceStatus.tankShow 
 
             #Useful or useless ?
             #self.async_update_ha_state()
