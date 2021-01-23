@@ -2,7 +2,6 @@
 # Home Assistant Custom Integration for Midea dehumidifiers (Inventor EVA II PRO WiFi / Comfee MDDP-50DEN7 appliances).
 
 [![HitCount](http://hits.dwyl.com/barban-dev/homeassistant-midea-dehumidifier.svg)](http://hits.dwyl.com/barban-dev/homeassistant-midea-dehumidifier)
-[![HitCount](http://hits.dwyl.io/barban-dev/homeassistant-midea-dehumidifier.svg)](http://hits.dwyl.io/barban-dev/homeassistant-midea-dehumidifier)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5E7ULVFGCGKU2&source=url)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
@@ -11,8 +10,7 @@ Author: Andrea Barbaresi =2020=
 Licence: GPLv3
 
 This repo contains a Home Assistant custom integration for EVA II PRO WiFi Smart Dehumidifier appliance by Midea/Inventor.
-
-[NEWS!] It has been reported that the custom integration can work also with **Comfee MDDP-50DEN7** appliance [/NEWS!] 
+It has been reported that the custom integration can work also with **Comfee MDDP-50DEN7** appliance.
 
 This custom component is based on python library [***midea_inventor_lib***.](https://github.com/barban-dev/midea_inventor_dehumidifier): see library's readme and prerequisites to be able to control your device on Home Assistant.
 
