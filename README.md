@@ -17,15 +17,15 @@ This custom component is based on python library [***midea_inventor_lib***.](htt
 
 Info about the dehumidifier appliance can be found [here.](https://www.inventorappliances.com/dehumidifiers/eva-ii-pro-wi-fi-20l)
 
-You can buy Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon (the two links below contain my referral code):
+You can buy Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon (the links below contain my referral code):
 * [Inventor Eva II PRO WiFi on Amazon.it](https://amzn.to/2RsIQMx)
 * [Comfee MDDP-50DEN7 on Amazon.it](https://amzn.to/3iuBX9D)
 
-* [Inventor Eva II PRO WiFi on Amazon.de](https://amzn.to/2ZC4GBS)
-* [Comfee MDDP-50DEN7 on Amazon.de](https://amzn.to/3kn3Elj)
+* [Inventor Eva II PRO WiFi on Amazon.de](https://amzn.to/3iXpU5F)
+* [Comfee MDDP-50DEN7 on Amazon.de](https://amzn.to/3iZ5WYm)
 
-* [Inventor Eva II PRO WiFi on Amazon.es](https://amzn.to/3klioB9)
-* [Comfee MDDP-50DEN7 on Amazon.es](https://amzn.to/2FDc34I)
+* [Inventor Eva II PRO WiFi on Amazon.es](https://amzn.to/39pYMJb)
+* [Comfee MDDP-50DEN7 on Amazon.es](https://amzn.to/2M3MqOn)
 
 * [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3klHdgh)
 * [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/2FlQoi1)
