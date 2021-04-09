@@ -8,7 +8,7 @@ VERSION = '1.0.2'
 import logging
 from typing import List, Optional
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_API_CLIENT, MIDEA_TARGET_DEVICE
-from homeassistant.const import ATTR_ENTITY_ID, ATTR_MODE
+from homeassistant.const import ATTR_MODE
 from homeassistant.components.humidifier import HumidifierEntity
 from homeassistant.components.humidifier.const import (
     ATTR_AVAILABLE_MODES,
@@ -514,4 +514,3 @@ class MideaDehumidifierDevice(HumidifierEntity):
                 self.__refresh_device_status()
             else:
                 _LOGGER.error("climate.midea-dehumi: send_mode_command ERROR.")
-
