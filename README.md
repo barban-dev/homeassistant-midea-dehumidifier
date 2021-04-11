@@ -27,8 +27,8 @@ You can buy Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amaz
 * [Inventor Eva II PRO WiFi on Amazon.es](https://amzn.to/39pYMJb)
 * [Comfee MDDP-50DEN7 on Amazon.es](https://amzn.to/2M3MqOn)
 
-* [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3klHdgh)
-* [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/2FlQoi1)
+* [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3a1reBl)
+* [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/3d5eADc)
 
 * [Inventor Eva II PRO WiFi on Amazon.co.uk](https://amzn.to/3d5dSWy)
 * [Comfee MDDP-50DEN7 on Amazon.co.uk](https://amzn.to/3s6uJfP)
