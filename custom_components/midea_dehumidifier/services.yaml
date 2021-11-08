@@ -27,5 +27,5 @@ set_mode:
       description: Name of entity to change.
       example: 'midea_dehumidifier.12345678901234'
     mode:
-      description: New mode (Target_humidity, Continuos, Smart, Dryer)
+      description: New mode (Target_humidity, Continuous, Smart, Dryer)
       example: 'Target_humidity'
