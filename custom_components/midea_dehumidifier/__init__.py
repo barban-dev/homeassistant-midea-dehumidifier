@@ -79,14 +79,14 @@ async def async_setup(hass, config):
     appliancesStr = ""
     for a in appliances:
         appliancesStr = "[id="+a["id"]+" type="+a["type"]+" name="+a["name"]+"]"
-    if a["onlineStatus"] == "1":
-        appliancesStr += " is online,"
-    else:
-        appliancesStr += " is offline,"
-    if a["activeStatus"] == "1":
-        appliancesStr += " is active.\n"
-    else:
-        appliancesStr += " is not active.\n"
+        if a["onlineStatus"] == "1":
+            appliancesStr += " is online,"
+        else:
+            appliancesStr += " is offline,"
+        if a["activeStatus"] == "1":
+            appliancesStr += " is active.\n"
+        else:
+            appliancesStr += " is not active.\n"
 		
     _LOGGER.info("midea-dehumi: "+appliancesStr)
     
