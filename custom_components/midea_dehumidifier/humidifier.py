@@ -65,8 +65,8 @@ SUPPORT_FLAGS = SUPPORT_MODES
 MIN_HUMITIDY = 35
 MAX_HUMITIDY = 70
 
-DEHUMI_MODES_DICT = { 'TARGET_HUMIDITY' : 1, 'CONTINUOS' : 2, 'SMART' : 3, 'DRYER' : 4}
-DEHUMI_MODES_LIST = [ 'Target_humidity', 'Continuos', 'Smart', 'Dryer']
+DEHUMI_MODES_DICT = { 'TARGET_HUMIDITY' : 1, 'CONTINUOUS' : 2, 'SMART' : 3, 'DRYER' : 4}
+DEHUMI_MODES_LIST = [ 'Target_humidity', 'Continuous', 'Smart', 'Dryer']
 
 DEHUMI_FAN_SPEED_DICT = { 'SILENT' : 40, 'MEDIUM' : 60, 'HIGH' : 80 }
 DEHUMI_FAN_SPEED_LIST = [ 'Silent', 'Medium', 'High' ]
@@ -163,7 +163,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
 
         #Default values for device state
         self._powerMode = None			# 0:off, 1:on
-        self._mode = None			    # device's current mode ['Target_humidity', 'Continuos', 'Smart', 'Dryer']
+        self._mode = None			    # device's current mode ['Target_humidity', 'Continuous', 'Smart', 'Dryer']
         self._ionSetSwitch = None       # 0:off, 1:on
         self._humidity = None			# current humidity
         self._humidity_set = None		# target hunidity

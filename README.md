@@ -90,7 +90,7 @@ input_select:
     name: "Modes"
     options:
       - Target_humidity
-      - Continuos
+      - Continuous
       - Smart
       - Dryer
     icon: "mdi:animation-outline"
