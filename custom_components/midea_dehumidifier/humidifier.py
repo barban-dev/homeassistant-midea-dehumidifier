@@ -3,13 +3,17 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.0.2'
+VERSION = '1.0.4'
 
 import logging
 from typing import List, Optional
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_API_CLIENT, MIDEA_TARGET_DEVICE
 from homeassistant.const import ATTR_MODE
-from homeassistant.components.humidifier import HumidifierEntity
+
+#patch for HA2024.1.0
+#from homeassistant.components.humidifier import HumidifierEntity
+from homeassistant.components.humidifier import HumidifierEntity, HumidifierDeviceClass, HumidifierEntityFeature	
+
 from homeassistant.components.humidifier.const import (
     ATTR_AVAILABLE_MODES,
     ATTR_HUMIDITY,
@@ -17,16 +21,15 @@ from homeassistant.components.humidifier.const import (
     ATTR_MIN_HUMIDITY,
     DEFAULT_MAX_HUMIDITY,
     DEFAULT_MIN_HUMIDITY,
-    DEVICE_CLASS_DEHUMIDIFIER,
-	SERVICE_SET_HUMIDITY,
-    SERVICE_SET_MODE,
-    SUPPORT_MODES
+    #patch for HA2024.1.0
+    #DEVICE_CLASS_DEHUMIDIFIER,
+    SERVICE_SET_HUMIDITY,
+    SERVICE_SET_MODE
+    #SUPPORT_MODES
 )
 
-#import asyncio
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
-#from homeassistant.helpers import config_validation as cv, entity_platform, service
 from homeassistant.helpers import service
 from homeassistant.helpers.dispatcher import async_dispatcher_connect, async_dispatcher_send
 from homeassistant.core import callback
@@ -58,8 +61,9 @@ SERVICE_SET_MODE_SCHEMA = vol.Schema({
 
 _LOGGER = logging.getLogger(__name__)
 
-#SUPPORT_FLAGS = 0
-SUPPORT_FLAGS = SUPPORT_MODES
+#patch for HA2024.1.0
+#SUPPORT_FLAGS = SUPPORT_MODES
+SUPPORT_FLAGS = HumidifierEntityFeature.MODES
 
 #TODO: in midea_dehumi python lib the range 30-70 is hard coded (fix it)
 MIN_HUMITIDY = 35
@@ -163,12 +167,12 @@ class MideaDehumidifierDevice(HumidifierEntity):
 
         #Default values for device state
         self._powerMode = None			# 0:off, 1:on
-        self._mode = None			    # device's current mode ['Target_humidity', 'Continuous', 'Smart', 'Dryer']
-        self._ionSetSwitch = None       # 0:off, 1:on
+        self._mode = None			# device's current mode ['Target_humidity', 'Continuous', 'Smart', 'Dryer']
+        self._ionSetSwitch = None		# 0:off, 1:on
         self._humidity = None			# current humidity
         self._humidity_set = None		# target hunidity
         self._humidity_dot = None		# current humidity (decimal)
-        self._humidity_dot_set = None	# target humidity (decimal)
+        self._humidity_dot_set = None		# target humidity (decimal)
         self._windSpeed = None			# fan speed [1..99]
         self._windSpeedMode = None		# fan speed mode (Silent:40, Medium:60, High:80)
         self._isDisplay = None
@@ -178,7 +182,9 @@ class MideaDehumidifierDevice(HumidifierEntity):
         self._upanddownSwing = None
         self._tankShow = False
 
-        self._device_class = DEVICE_CLASS_DEHUMIDIFIER
+	#patch for HA2024.1.0
+        #self._device_class = DEVICE_CLASS_DEHUMIDIFIER
+	self._device_class = HumidifierDeviceClass.DEHUMIDIFIER
 
         ##Get appliance's status to set initial values for the device
         #_LOGGER.debug("midea-client: querying appliance status via Web API...")
@@ -268,8 +274,10 @@ class MideaDehumidifierDevice(HumidifierEntity):
         """Return the tank status """
         return self._tankShow
 
+    #patch for HA2024.1.0
+    #def extra_state_attributes(self):	
     @property
-    def extra_state_attributes(self):
+    def device_state_attributes(self):
         """Return entity specific state attributes."""
         data = {}
 
