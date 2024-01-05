@@ -269,7 +269,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
         return self._tankShow
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return entity specific state attributes."""
         data = {}
 
