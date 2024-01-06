@@ -181,10 +181,10 @@ class MideaDehumidifierDevice(HumidifierEntity):
         self._dryClothesSetSwitch = None
         self._upanddownSwing = None
         self._tankShow = False
-
-	#patch for HA2024.1.0
+	    
+        #patch for HA2024.1.0
         #self._device_class = DEVICE_CLASS_DEHUMIDIFIER
-	self._device_class = HumidifierDeviceClass.DEHUMIDIFIER
+        self._device_class = HumidifierDeviceClass.DEHUMIDIFIER
 
         ##Get appliance's status to set initial values for the device
         #_LOGGER.debug("midea-client: querying appliance status via Web API...")
