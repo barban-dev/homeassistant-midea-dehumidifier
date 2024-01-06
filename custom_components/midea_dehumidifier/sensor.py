@@ -52,7 +52,7 @@ class MideaDehumidifierSensor(Entity):
         #patch for HA2024.1.0
         #self._device_class = DEVICE_CLASS_HUMIDITY
         self._device_class = SensorDeviceClass.HUMIDITY
-	
+
         self._unit_of_measurement = '%'
         self._icon = 'mdi:water-percent'
         #self._battery = battery
