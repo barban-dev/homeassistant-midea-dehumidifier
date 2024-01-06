@@ -48,10 +48,10 @@ class MideaDehumidifierSensor(Entity):
         self._hass = hass
         self._name = 'midea_dehumidifier_' + targetDevice['id'] + '_humidity'
         self._unique_id = 'midea_dehumidifier_' + targetDevice['id'] + '_humidity'
-	    
+
         #patch for HA2024.1.0
         #self._device_class = DEVICE_CLASS_HUMIDITY
-	self._device_class = SensorDeviceClass.HUMIDITY
+        self._device_class = SensorDeviceClass.HUMIDITY
 	
         self._unit_of_measurement = '%'
         self._icon = 'mdi:water-percent'
