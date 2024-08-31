@@ -87,7 +87,7 @@ PROP_TO_ATTR = {
     "windSpeedMode": ATTR_FAN_SPEED_MODE,
     "windSpeed": ATTR_FAN_SPEED,
 	"current_humidity": ATTR_CURRRENT_HUMIDITY,
-        "tank_show": ATTR_TANK,	
+    "tank_show": ATTR_TANK,	
 }
 
 
@@ -274,10 +274,8 @@ class MideaDehumidifierDevice(HumidifierEntity):
         """Return the tank status """
         return self._tankShow
 
-    #patch for HA2024.1.0
-    #def extra_state_attributes(self):	
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return entity specific state attributes."""
         data = {}
 
