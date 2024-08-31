@@ -3,7 +3,7 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.0.5'
+VERSION = '1.05'
 
 import logging
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_TARGET_DEVICE
