@@ -3,15 +3,13 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.0.4'
+VERSION = '1.0.5'
 
 import logging
 from typing import List, Optional
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_API_CLIENT, MIDEA_TARGET_DEVICE
 from homeassistant.const import ATTR_MODE
 
-#patch for HA2024.1.0
-#from homeassistant.components.humidifier import HumidifierEntity
 from homeassistant.components.humidifier import HumidifierEntity, HumidifierDeviceClass, HumidifierEntityFeature	
 
 from homeassistant.components.humidifier.const import (
@@ -21,11 +19,8 @@ from homeassistant.components.humidifier.const import (
     ATTR_MIN_HUMIDITY,
     DEFAULT_MAX_HUMIDITY,
     DEFAULT_MIN_HUMIDITY,
-    #patch for HA2024.1.0
-    #DEVICE_CLASS_DEHUMIDIFIER,
     SERVICE_SET_HUMIDITY,
-    SERVICE_SET_MODE
-    #SUPPORT_MODES
+    SERVICE_SET_MODE,
 )
 
 import voluptuous as vol
@@ -61,8 +56,6 @@ SERVICE_SET_MODE_SCHEMA = vol.Schema({
 
 _LOGGER = logging.getLogger(__name__)
 
-#patch for HA2024.1.0
-#SUPPORT_FLAGS = SUPPORT_MODES
 SUPPORT_FLAGS = HumidifierEntityFeature.MODES
 
 #TODO: in midea_dehumi python lib the range 30-70 is hard coded (fix it)
@@ -75,7 +68,6 @@ DEHUMI_MODES_LIST = [ 'Target_humidity', 'Continuous', 'Smart', 'Dryer']
 DEHUMI_FAN_SPEED_DICT = { 'SILENT' : 40, 'MEDIUM' : 60, 'HIGH' : 80 }
 DEHUMI_FAN_SPEED_LIST = [ 'Silent', 'Medium', 'High' ]
 
-
 #States Attributes
 ATTR_ION_SET_SWITCH = "ion"
 ATTR_FAN_SPEED_MODE = "fan_speed_mode"
@@ -83,10 +75,10 @@ ATTR_CURRRENT_HUMIDITY = "current_humidity"
 ATTR_TANK = "tank_show"
 PROP_TO_ATTR = {
     "ionSetSwitch": ATTR_ION_SET_SWITCH,
-	"mode": ATTR_MODE,
+    "mode": ATTR_MODE,
     "windSpeedMode": ATTR_FAN_SPEED_MODE,
     "windSpeed": ATTR_FAN_SPEED,
-	"current_humidity": ATTR_CURRRENT_HUMIDITY,
+    "current_humidity": ATTR_CURRRENT_HUMIDITY,
     "tank_show": ATTR_TANK,	
 }
 
@@ -136,8 +128,6 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
     return True
 
-
-
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the Dehumidifier device config entry."""
     await async_setup_platform(hass, {}, async_add_entities)
@@ -182,8 +172,6 @@ class MideaDehumidifierDevice(HumidifierEntity):
         self._upanddownSwing = None
         self._tankShow = False
 	    
-        #patch for HA2024.1.0
-        #self._device_class = DEVICE_CLASS_DEHUMIDIFIER
         self._device_class = HumidifierDeviceClass.DEHUMIDIFIER
 
         ##Get appliance's status to set initial values for the device
@@ -296,20 +284,6 @@ class MideaDehumidifierDevice(HumidifierEntity):
         async_dispatcher_connect(self.hass, SERVICE_SET_FAN_SPEED.format(self.entity_id), self.service_set_fan_speed)
         async_dispatcher_connect(self.hass, SERVICE_SET_ION_STATE.format(self.entity_id), self.service_set_ion_state)
         async_dispatcher_connect(self.hass, SERVICE_SET_MODE.format(self.entity_id), self.service_set_mode)
-
-#
-#    def __hass_update_state_attribute(self, _state, _attr, _value):
-#        """Update attribute on state obtained via hass.states.get() and return dict containing all the state attributes."""
-#        data = {}
-#        for attr, value in _state.attributes.items():
-#            #_LOGGER.info("(attr, value) = (%s,%s)", attr, value)
-#            if attr == _attr:
-#                data[attr] = _value
-#            else:
-#                data[attr] = value
-#
-#        return data
-#
 
     @callback
     async def service_set_fan_speed(self, speed_mode):
@@ -447,16 +421,6 @@ class MideaDehumidifierDevice(HumidifierEntity):
             #Useful or useless ?
             #self.async_update_ha_state()
             #self.async_schedule_update_ha_state()
-
-            #PROVE
-            #async_update_entity(self._hass, self._name)
-            #async_update_entity(self._hass, 'humidifier.midea_dehumidifier_17592186063322')
-			#ALTERNATIVA DA PROVARE: self.async_update_entity(self._hass, self._unique_id)
-
-#            state = hass.states.get(entity_id)
-#            if state:
-#                attrs = state.attributes
-#            self._hass.states.set(self._unique_id, state, state.attributes, force_update=True)
 
 
     async def async_turn_on(self, **kwargs):
