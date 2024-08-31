@@ -4,6 +4,6 @@
    "codeowners": ["barban-dev"],
    "documentation": "https://github.com/barban-dev/homeassistant-midea-dehumidifier/blob/master/README.md",
    "issue_tracker": "https://github.com/barban-dev/homeassistant-midea-dehumidifier/issues",
-   "homeassistant": "0.96.0",
+   "homeassistant": "2024.1.0",
    "iot_class": "Cloud Polling"
 }
