@@ -30,13 +30,12 @@ You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) o
   
 ### Amazon IT
 * [Midea FRESH DRY 10L](https://amzn.to/3AFEviX)
-* [Midea FRESH DRY 20L](https://amzn.to/3TbaY7c)
-* [Midea FRESH DRY 40L (DE plug)](https://amzn.to/478z0pk)
-* [Midea FRESH DRY 40L](https://amzn.to/3MqOHhY)
-
+* [Midea FRESH DRY 12L](https://amzn.to/3TbaY7c)
+* [Midea FRESH DRY 20L (DE plug)](https://amzn.to/478z0pk)
+* [Midea FRESH DRY 20L](https://amzn.to/3MqOHhY)
 * [Inventor Eva II PRO WiFi on Amazon.it](https://amzn.to/2RsIQMx)
 * [Comfee MDDP-50DEN7 on Amazon.it](https://amzn.to/3iuBX9D)
-
+  
 ### Amazon DE
 * [Inventor Eva II PRO WiFi on Amazon.de](https://amzn.to/3iXpU5F)
 * [Comfee MDDP-50DEN7 on Amazon.de](https://amzn.to/3iZ5WYm)
