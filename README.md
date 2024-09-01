@@ -63,9 +63,19 @@ You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) o
 * [Comfeee Easy Dry 20L](https://amzn.to/3z5gbXt)
     
 ### Amazon ES
-* [Inventor Eva II PRO WiFi on Amazon.es](https://amzn.to/39pYMJb)
-* [Comfee MDDP-50DEN7 on Amazon.es](https://amzn.to/2M3MqOn)
-
+* [Midea Cube 20L](https://amzn.to/3zdecQN)
+* [Midea MDDF-20DEN7 20L](https://amzn.to/3T8qIrO)
+* [Midea MDDF-20DEN7 50L](https://amzn.to/4e8TQqD)
+* [Midea 12L](https://amzn.to/3ANqIHd)
+* [Midea 20L](https://amzn.to/4761JuZ)
+* [Midea 1500 pies](https://amzn.to/3Teer4T)
+* [Comfee 10L](https://amzn.to/4g7skM2)
+* [Comfee 12L](https://amzn.to/4e4pzcL)
+* [Comfee 20L](https://amzn.to/4gbXBxF)
+* [Comfee 20L new 2024 version](https://amzn.to/4dLaWeG)
+* [Comfee Easy Dry 16L new 2024 version](https://amzn.to/3z32ubu)
+* [Comfee Easy Dry 50L new 2024 version](https://amzn.to/3TbTjMT)
+  
 ### Amazon FR
 * [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3a1reBl)
 * [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/3d5eADc)
