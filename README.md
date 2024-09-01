@@ -14,8 +14,6 @@ It has been reported that the custom integration can work also with **Comfee MDD
 
 This custom component is based on python library [***midea_inventor_lib***.](https://github.com/barban-dev/midea_inventor_dehumidifier): see library's readme and prerequisites to be able to control your device on Home Assistant.
 
-Info about the dehumidifier appliance can be found [here.](https://www.inventorappliances.com/dehumidifiers/eva-ii-pro-wi-fi-20l)
-
 You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon sites (the links below contain my referral code):
 ### Amazon USA
 * [Midea Cube 20 pint](https://amzn.to/3MA8R9b)
