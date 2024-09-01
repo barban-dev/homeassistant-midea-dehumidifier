@@ -22,6 +22,11 @@ You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) o
 * [Midea Cube 35 pint](https://amzn.to/4cOeFXp)
 * [Midea Cube 50 pint](https://amzn.to/3MuxWCE)
 * [Midea Cube 50 pint w pump](https://amzn.to/3MA8ZWd)
+* [Midea EasyDry 22 pint](https://amzn.to/3TdxAUy)
+* [Midea EasyDry 35 pint](https://amzn.to/4cLXJkl)
+* [Midea EasyDry 50 pint](https://amzn.to/4cNR6On)
+* [Midea EasyDry 50 pint w pump](https://amzn.to/3MugDSb)
+* [Midea EasyDry 50 pint w pump wifi upd](https://amzn.to/478YAuc)
   
 ### Amazon IT
 * [Midea FRESH DRY 10L](https://amzn.to/3AFEviX)
