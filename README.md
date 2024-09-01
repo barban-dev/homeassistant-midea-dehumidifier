@@ -17,6 +17,12 @@ This custom component is based on python library [***midea_inventor_lib***.](htt
 Info about the dehumidifier appliance can be found [here.](https://www.inventorappliances.com/dehumidifiers/eva-ii-pro-wi-fi-20l)
 
 You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon sites (the links below contain my referral code):
+### Amazon USA
+* [Midea Cube 20 pint](https://amzn.to/3MA8R9b)
+* [Midea Cube 35 pint](https://amzn.to/4cOeFXp)
+* [Midea Cube 50 pint](https://amzn.to/3MuxWCE)
+* [Midea Cube 50 pint w pump](https://amzn.to/3MA8ZWd)
+  
 ### Amazon IT
 * [Midea FRESH DRY 10L](https://amzn.to/3AFEviX)
 * [Midea FRESH DRY 20L](https://amzn.to/3TbaY7c)
