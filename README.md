@@ -77,10 +77,22 @@ You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) o
 * [Comfee Easy Dry 50L new 2024 version](https://amzn.to/3TbTjMT)
   
 ### Amazon FR
-* [Inventor Eva II PRO WiFi on Amazon.fr](https://amzn.to/3a1reBl)
-* [Comfee MDDP-50DEN7 on Amazon.fr](https://amzn.to/3d5eADc)
-
-
+* [Midea Cube 12L](https://amzn.to/478xHqa)
+* [Midea Cube 20L 80m2](https://amzn.to/3X86lfh)
+* [Midea Cube 20L 40m2](https://amzn.to/4g51YKL)
+* [Midea 12L](https://amzn.to/4gaVDgI)
+* [Midea 20L](https://amzn.to/3AVHwM6)
+* [Midea 50L](https://amzn.to/3AMkK9D)
+* [Midea ‎MAD22C1AWS](https://amzn.to/3XapltH)
+* [Midea Fresh Dry 10L w HEPA filter](https://amzn.to/4cM4jY5)
+* [Comfee 12L](https://amzn.to/3z1Urf0)
+* [Comfee 20L](https://amzn.to/3AJaPBM)
+* [Comfee 50L](https://amzn.to/47bQpNQ)
+* [Comfee MDDN-10DEN7 10L](https://amzn.to/4dHVKig)
+* [Comfee Easy Dry 12L](https://amzn.to/3Z2ten7)
+* [Comfee MDDF-20DEN7 20L](https://amzn.to/3Tdyxwp)
+* [Comfee MDDPE-30DEN7 30L](https://amzn.to/4dKjceV)
+  
 ## Installation instruction
 
 ### HACS [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
