@@ -16,15 +16,15 @@ This custom component is based on python library [***midea_inventor_lib***.](htt
 
 You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) on Amazon sites (the links below contain my referral code):
 ### Amazon USA
-* [Midea Cube 20 pint](https://amzn.to/3MA8R9b)
-* [Midea Cube 35 pint](https://amzn.to/4cOeFXp)
-* [Midea Cube 50 pint](https://amzn.to/3MuxWCE)
-* [Midea Cube 50 pint w pump](https://amzn.to/3MA8ZWd)
-* [Midea EasyDry 22 pint](https://amzn.to/3TdxAUy)
-* [Midea EasyDry 35 pint](https://amzn.to/4cLXJkl)
-* [Midea EasyDry 50 pint](https://amzn.to/4cNR6On)
-* [Midea EasyDry 50 pint w pump](https://amzn.to/3MugDSb)
-* [Midea EasyDry 50 pint w pump wifi upd](https://amzn.to/478YAuc)
+* [Midea Cube 20 pint](https://amzn.to/3z6iA46)
+* [Midea Cube 35 pint](https://amzn.to/4gdUpBn)
+* [Midea Cube 50 pint](https://amzn.to/3Mz4HP6)
+* [Midea Cube 50 pint w pump](https://amzn.to/4e6FA1I)
+* [Midea EasyDry 22 pint](https://amzn.to/3AUMDwo)
+* [Midea EasyDry 35 pint](https://amzn.to/3B0hF5H)
+* [Midea EasyDry 50 pint](https://amzn.to/4dPwvKS)
+* [Midea EasyDry 50 pint w pump](https://amzn.to/3TiVhuN)
+* [Midea EasyDry 50 pint w pump wifi upd](https://amzn.to/3z4lnee)
 
 ### Amazon UK
 * [Inventor Fresh](https://amzn.to/3AVFkEm)
