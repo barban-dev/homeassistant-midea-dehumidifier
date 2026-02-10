@@ -5,7 +5,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5E7ULVFGCGKU2&source=url)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 
-Author: Andrea Barbaresi =2020-2024=
+Author: Andrea Barbaresi =2020-2025=
 
 Licence: GPLv3
 
@@ -51,12 +51,9 @@ You can buy Midea/Inventor/Comfee smart dehumidifier appliances (WiFi version) o
 * [Midea Quiet 20L](https://amzn.to/3ANpfkb)
 * [Midea Fesh Dry 10L](https://amzn.to/4cNUFUL)
 * [Midea Fesh Dry 12L](https://amzn.to/478HlJE)
-* [Comfeee MDDN-10DEN7 10L](https://amzn.to/3z2IHJ8)
-* [Comfeee MDDN-10DEN7 12L](https://amzn.to/3Xq234h)
-* [Comfeee MDDN-10DEN7 16L](https://amzn.to/3XsPPYA)
-* [Comfeee MDDN-10DEN7 20L](https://amzn.to/3Xufhft)
-* [Comfeee MDDN-10DEN7 30L](https://amzn.to/478ilSM)
-* [Comfeee MDDN-10DEN7 50L](https://amzn.to/3XosSWG)
+* [Comfeee MDDF-16DEN7-WF 16L](https://amzn.to/4a9jr3U)
+* [Comfeee MDDF-20DEN7-WF 20L](https://amzn.to/4kvixCe)
+* [Comfeee CDDAE-30DEN7-QA3 30L](https://amzn.to/4ajOLLV) 
 * [Comfeee Easy Dry 16L](https://amzn.to/4dL3DU2)
 * [Comfeee Easy Dry 20L](https://amzn.to/3z5gbXt)
     
