@@ -29,3 +29,13 @@ set_mode:
     mode:
       description: New mode (Target_humidity, Continuous, Smart, Dryer)
       example: 'Target_humidity'
+
+set_pump_state:
+  description: Set pump switch state for midea_dehumidifier device.
+  fields:
+    entity_id:
+      description: Name of the switch entity to change.
+      example: 'switch.midea_dehumidifier_12345678901234_pump'
+    pump_state:
+      description: true/false state
+      example: true

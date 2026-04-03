@@ -3,7 +3,7 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.06'
+VERSION = '1.07'
 
 DOMAIN = "midea_dehumidifier"
 MIDEA_API_CLIENT = "midea_api_client"
@@ -114,6 +114,9 @@ async def async_setup(hass, config):
 
         _LOGGER.info("midea-dehumidifier: loading sensor entity sub-component...")
         load_platform(hass, 'sensor', DOMAIN, {MIDEA_TARGET_DEVICE: targetDevice}, config)
+
+        _LOGGER.info("midea-dehumidifier: loading switch entity sub-component...")
+        load_platform(hass, 'switch', DOMAIN, {MIDEA_TARGET_DEVICE: targetDevice}, config)
 
         _LOGGER.info("midea_dehumidifier: platform successfuly initialized.")
         return True
