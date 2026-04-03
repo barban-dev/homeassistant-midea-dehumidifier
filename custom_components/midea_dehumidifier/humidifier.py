@@ -178,11 +178,16 @@ class MideaDehumidifierDevice(HumidifierEntity):
         #_LOGGER.debug("midea-client: querying appliance status via Web API...")
         #res = self._client.get_device_status(self._device['id'])
         #if res == 1:
-        #    _LOGGER.debug("midea_dehumidifier: get_device_status suceeded: "+self._client.deviceStatus.toString())
+        #    _LOGGER.debug("midea_dehumidifier: get_device_status suceeded: "+self._device_status.toString())
         #    #Set initial values for device's status
         #    self.__refresh_device_status()
         #else:
         #    _LOGGER.error("midea_dehumidifier: get_device_status error")
+
+    @property
+    def _device_status(self):
+        """Return the device-specific status object from the shared client."""
+        return self._client.deviceStatus.get(self._device['id'])
 
     @property
     def unique_id(self):
@@ -291,11 +296,12 @@ class MideaDehumidifierDevice(HumidifierEntity):
         _LOGGER.info("service_set_fan_speed called, speed_mode = %s", speed_mode)
         speed = self._fan_dict.get(speed_mode.upper(), 0)
         _LOGGER.info("speed = %s", speed)
-        if self.is_on and self._windSpeed != speed and self._client.deviceStatus.setMode != 4:
+        ds = self._device_status
+        if self.is_on and self._windSpeed != speed and (ds is None or ds.setMode != 4):
             _LOGGER.debug("midea-dehumidifier: sending send_fan_speed_command via Web API...")
             res = await self.hass.async_add_executor_job(self._client.send_fan_speed_command, self._device["id"], speed)
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_fan_speed_command suceeded: "+self._client.deviceStatus.toString())
+                _LOGGER.debug("midea-dehumidifier: send_fan_speed_command suceeded: "+self._device_status.toString())
                 self._windSpeed = speed
                 self._windSpeedMode = speed_mode
                 
@@ -324,7 +330,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
                 _LOGGER.debug("midea-dehumidifier: sending send_ion_off_command via Web API...")
                 res = await self.hass.async_add_executor_job(self._client.send_ion_off_command, self._device["id"])
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_ion_(on/off)_command suceeded: "+self._client.deviceStatus.toString())
+                _LOGGER.debug("midea-dehumidifier: send_ion_(on/off)_command suceeded: "+self._device_status.toString())
                 self._ionSetSwitch = ion_state
                 #Update state attribute
                 state = self._hass.states.get('humidifier.'+self._unique_id)
@@ -347,7 +353,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
             _LOGGER.debug("midea-dehumidifier: sending send_mode_command via Web API...")
             res = await self.hass.async_add_executor_job(self._client.send_mode_command, self._device["id"], mode)
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_mode_command suceeded: "+self._client.deviceStatus.toString())
+                _LOGGER.debug("midea-dehumidifier: send_mode_command suceeded: "+self._device_status.toString())
                 self._mode = mode_name
                 #Dryer mode set speed_mode to High too
                 if mode == 4:    
@@ -380,7 +386,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
             #res = self._client.get_device_status(self._device['id'])
             res = await self.hass.async_add_executor_job(self._client.get_device_status, self._device['id'])
             if res == 1:
-                _LOGGER.info(self._client.deviceStatus.toString())
+                _LOGGER.info(self._device_status.toString())
                 #Refresh device status
                 self.__refresh_device_status()
             else:
@@ -389,15 +395,15 @@ class MideaDehumidifierDevice(HumidifierEntity):
 
     def __refresh_device_status(self):
         """Called by async_update(self): keep UI updated with respect to the updated status."""
-        if self._client.deviceStatus is not None:
-            self._powerMode = self._client.deviceStatus.powerMode
-            self._ionSetSwitch = self._client.deviceStatus.ionSetSwitch
+        ds = self._device_status
+        if ds is not None:
+            self._powerMode = ds.powerMode
+            self._ionSetSwitch = ds.ionSetSwitch
 
             #Current mode
-            #self._mode = self._client.deviceStatus.setMode
-            self._mode = self._available_modes[self._client.deviceStatus.setMode - 1]
+            self._mode = self._available_modes[ds.setMode - 1]
 
-            self._windSpeed = self._client.deviceStatus.windSpeed
+            self._windSpeed = ds.windSpeed
             if self._windSpeed == 40:
                 self._windSpeedMode = self._fan_list[0]
             elif self._windSpeed == 60:
@@ -407,16 +413,16 @@ class MideaDehumidifierDevice(HumidifierEntity):
             else:
                 self._windSpeedMode = "unknown"
 
-            self._humidity = self._client.deviceStatus.humidity
-            self._humidity_set = self._client.deviceStatus.humidity_set
-            self._humidity_dot = self._client.deviceStatus.humidity_dot
-            self._humidity_dot_set = self._client.deviceStatus.humidity_dot_set
-            self._isDisplay = self._client.deviceStatus.isDisplay
-            self._filterShow = self._client.deviceStatus.filterShow
-            self._tankShow = self._client.deviceStatus.tankShow
-            self._dryClothesSetSwitch = self._client.deviceStatus.dryClothesSetSwitch
-            self._upAndDownSwing = self._client.deviceStatus.upAndDownSwing
-            self._tankShow = self._client.deviceStatus.tankShow 
+            self._humidity = ds.humidity
+            self._humidity_set = ds.humidity_set
+            self._humidity_dot = ds.humidity_dot
+            self._humidity_dot_set = ds.humidity_dot_set
+            self._isDisplay = ds.isDisplay
+            self._filterShow = ds.filterShow
+            self._tankShow = ds.tankShow
+            self._dryClothesSetSwitch = ds.dryClothesSetSwitch
+            self._upAndDownSwing = ds.upAndDownSwing
+            self._tankShow = ds.tankShow 
 
             #Useful or useless ?
             #self.async_update_ha_state()
@@ -431,7 +437,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
             #res = self._client.send_poweron_command(self._device["id"])
             res = await self.hass.async_add_executor_job(self._client.send_poweron_command, self._device["id"])
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_poweron_command suceeded: "+self._client.deviceStatus.toString())
+                _LOGGER.debug("midea-dehumidifier: send_poweron_command suceeded: "+self._device_status.toString())
                 #Refresh device status
                 self.__refresh_device_status()
             else:
@@ -446,7 +452,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
             #res = self._client.send_poweroff_command(self._device["id"])
             res = await self.hass.async_add_executor_job(self._client.send_poweroff_command, self._device["id"])
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_poweroff_command suceeded: "+self._client.deviceStatus.toString())
+                _LOGGER.debug("midea-dehumidifier: send_poweroff_command suceeded: "+self._device_status.toString())
                 #Refresh device status
                 self.__refresh_device_status()
             else:
@@ -462,7 +468,7 @@ class MideaDehumidifierDevice(HumidifierEntity):
                 #res = self._client.send_target_humidity_command(self._device["id"], humidity)
                 res = await self.hass.async_add_executor_job(self._client.send_target_humidity_command, self._device["id"], humidity)
                 if res is not None:
-                    _LOGGER.info("midea-dehumidifier: send_target_humidity_command succeeded: "+self._client.deviceStatus.toString())
+                    _LOGGER.info("midea-dehumidifier: send_target_humidity_command succeeded: "+self._device_status.toString())
                     #Refresh device status
                     self.__refresh_device_status()
                 else:
@@ -478,8 +484,10 @@ class MideaDehumidifierDevice(HumidifierEntity):
             #res = self._client.send_mode_command(self._device["id"], mode_num)
             res = await self.hass.async_add_executor_job(self._client.send_mode_command, self._device["id"], mode_num)
             if res is not None:
-                _LOGGER.debug("midea-dehumidifier: send_mode_command suceeded: "+self._client.deviceStatus.toString())
-                self._client.deviceStatus._setMode = mode_num
+                _LOGGER.debug("midea-dehumidifier: send_mode_command suceeded: "+self._device_status.toString())
+                ds = self._device_status
+                if ds is not None:
+                    ds._setMode = mode_num
                 #Refresh device status
                 self.__refresh_device_status()
             else:

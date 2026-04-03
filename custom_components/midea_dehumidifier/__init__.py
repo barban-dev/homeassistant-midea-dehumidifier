@@ -3,7 +3,7 @@ Custom integation based on humidifer and sensor platforms for EVA II PRO WiFi Sm
 For more details please refer to the documentation at
 https://github.com/barban-dev/midea_inventor_dehumidifier
 """
-VERSION = '1.07'
+VERSION = '1.08'
 
 DOMAIN = "midea_dehumidifier"
 MIDEA_API_CLIENT = "midea_api_client"
@@ -90,36 +90,25 @@ async def async_setup(hass, config):
 		
     _LOGGER.info("midea-dehumi: "+appliancesStr)
     
-    #The first appliance having type="0xA1" is returned for default (TODO: otherwise, 'deviceId' configuration option can be used)
-    targetDevice = None
-    if not deviceId:
-        if appliances is not None:
-            for a in appliances:
-                if a["type"] == "0xA1":
-                    deviceId = str(a["id"])
-                    targetDevice = a
-    else:
-        if appliances is not None:
-            for a in appliances:
-                if a["type"] == "0xA1" and deviceID == str(a["id"]):
-                    targetDevice = a
+    #Load platform entities for all 0xA1 devices found on the account.
+    #If 'deviceId' is specified in config, only that device is loaded.
+    hass.data[MIDEA_API_CLIENT] = client
 
+    devicesFound = 0
+    if appliances is not None:
+        for a in appliances:
+            if a["type"] == "0xA1":
+                if deviceId and deviceId != str(a["id"]):
+                    continue
+                _LOGGER.info("midea-dehumidifier: device type 0xA1 found: id=%s name=%s", a["id"], a["name"])
+                devicesFound += 1
+                load_platform(hass, 'humidifier', DOMAIN, {MIDEA_TARGET_DEVICE: a}, config)
+                load_platform(hass, 'sensor',     DOMAIN, {MIDEA_TARGET_DEVICE: a}, config)
+                load_platform(hass, 'switch',     DOMAIN, {MIDEA_TARGET_DEVICE: a}, config)
 
-    if targetDevice:
-        _LOGGER.info("midea-dehumidifier: device type 0xA1 found.")
-
-        hass.data[MIDEA_API_CLIENT] = client
-        _LOGGER.info("midea-dehumidifier: loading humidifier entity sub-component...")
-        load_platform(hass, 'humidifier', DOMAIN, {MIDEA_TARGET_DEVICE: targetDevice}, config)
-
-        _LOGGER.info("midea-dehumidifier: loading sensor entity sub-component...")
-        load_platform(hass, 'sensor', DOMAIN, {MIDEA_TARGET_DEVICE: targetDevice}, config)
-
-        _LOGGER.info("midea-dehumidifier: loading switch entity sub-component...")
-        load_platform(hass, 'switch', DOMAIN, {MIDEA_TARGET_DEVICE: targetDevice}, config)
-
-        _LOGGER.info("midea_dehumidifier: platform successfuly initialized.")
+    if devicesFound > 0:
+        _LOGGER.info("midea_dehumidifier: platform successfuly initialized (%d device(s) found).", devicesFound)
         return True
     else:
-        _LOGGER.error("midea-dehumidifier: device type 0xA1 not found.")
+        _LOGGER.error("midea-dehumidifier: no device type 0xA1 found.")
         return False

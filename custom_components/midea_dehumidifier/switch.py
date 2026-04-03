@@ -59,14 +59,16 @@ class MideaPumpSwitch(SwitchEntity):
 
     async def async_update(self):
         """Update pump state from device status."""
-        if self._client.deviceStatus is not None:
-            self._is_on = self._client.deviceStatus.pumpSwitch == 1
+        ds = self._client.deviceStatus.get(self._device['id'])
+        if ds is not None:
+            self._is_on = ds.pumpSwitch == 1
             _LOGGER.debug("switch.midea_dehumidifier: pump state updated: %s", self._is_on)
 
     async def async_turn_on(self, **kwargs):
         """Turn the pump on."""
         _LOGGER.info("switch.midea_dehumidifier: async_turn_on (pump) called.")
-        if self._client.deviceStatus and self._client.deviceStatus.powerMode == 1:
+        ds = self._client.deviceStatus.get(self._device['id'])
+        if ds is not None and ds.powerMode == 1:
             res = await self._hass.async_add_executor_job(
                 self._client.send_pump_on_command, self._device['id']
             )
@@ -81,7 +83,8 @@ class MideaPumpSwitch(SwitchEntity):
     async def async_turn_off(self, **kwargs):
         """Turn the pump off."""
         _LOGGER.info("switch.midea_dehumidifier: async_turn_off (pump) called.")
-        if self._client.deviceStatus and self._client.deviceStatus.powerMode == 1:
+        ds = self._client.deviceStatus.get(self._device['id'])
+        if ds is not None and ds.powerMode == 1:
             res = await self._hass.async_add_executor_job(
                 self._client.send_pump_off_command, self._device['id']
             )
