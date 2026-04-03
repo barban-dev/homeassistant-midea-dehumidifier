@@ -7,7 +7,7 @@
 
 Author: Andrea Barbaresi =2020-2026=
 
-**NEW: support for multiple devices introduced in v. 1.0.8 !!!**  
+**NEW: support for multiple devices introduced in v. 1.08 !!!**  
   
 Licence: GPLv3
 
