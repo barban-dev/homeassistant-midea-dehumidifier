@@ -8,6 +8,7 @@ VERSION = '1.07'
 import logging
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_API_CLIENT, MIDEA_TARGET_DEVICE
 from homeassistant.components.switch import SwitchEntity
+from homeassistant.const import STATE_UNAVAILABLE
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -35,7 +36,9 @@ class MideaPumpSwitch(SwitchEntity):
         self._device = targetDevice
         self._name = 'midea_dehumidifier_' + targetDevice['id'] + '_pump'
         self._unique_id = 'midea_dehumidifier_' + targetDevice['id'] + '_pump'
+        self._humidifier_entity_id = 'humidifier.midea_dehumidifier_' + targetDevice['id']
         self._is_on = False
+        self._available = True
 
     @property
     def unique_id(self):
@@ -57,8 +60,16 @@ class MideaPumpSwitch(SwitchEntity):
     def should_poll(self):
         return True
 
+    @property
+    def available(self):
+        """Return True if the parent humidifier entity is available."""
+        return self._available
+
     async def async_update(self):
         """Update pump state from device status."""
+        #follow the humidifier entity's reachability (it owns the device poll)
+        state = self._hass.states.get(self._humidifier_entity_id)
+        self._available = state is not None and state.state != STATE_UNAVAILABLE
         ds = self._client.deviceStatus.get(self._device['id'])
         if ds is not None:
             self._is_on = ds.pumpSwitch == 1

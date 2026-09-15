@@ -24,6 +24,27 @@ _LOGGER = logging.getLogger(__name__)
 CONF_SHA256_PASSWORD = 'sha256password'
 CONF_DEVICEID = 'deviceId'
 
+#midea_inventor_lib logs this on the root logger (bare logging.error) every poll while
+#the appliance is offline, so it can't be silenced via HA's per-namespace logger: config.
+_OFFLINE_NOISE_MARKER = 'MideaClient::send_api_request: errorCode=3123'
+
+
+class _MideaOfflineNoiseFilter(logging.Filter):
+    """Drop the repeated 'appliance is offline' error logged on the root logger."""
+
+    def filter(self, record):
+        try:
+            return _OFFLINE_NOISE_MARKER not in record.getMessage()
+        except Exception:
+            return True
+
+
+def _install_offline_noise_filter():
+    """Add the offline-noise filter to the root logger once."""
+    root = logging.getLogger()
+    if not any(isinstance(f, _MideaOfflineNoiseFilter) for f in root.filters):
+        root.addFilter(_MideaOfflineNoiseFilter())
+
 CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Required(CONF_USERNAME): cv.string,
@@ -38,6 +59,8 @@ async def async_setup(hass, config):
     """Set up client for Midea API based on configuration entries."""
     _LOGGER.info("midea_dehumidifier: initializing platform...")
     _LOGGER.debug("midea_dehumidifier: starting async_setup")
+
+    _install_offline_noise_filter()
 
     if DOMAIN not in config:
         _LOGGER.error("midea_dehumi: cannot find midea_dehumi platform on configuration.yaml")

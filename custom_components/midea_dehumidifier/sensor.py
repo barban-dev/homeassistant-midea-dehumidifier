@@ -9,6 +9,7 @@ import logging
 from custom_components.midea_dehumidifier import DOMAIN, MIDEA_TARGET_DEVICE
 from homeassistant.helpers.entity import Entity
 from homeassistant.components.sensor import SensorDeviceClass
+from homeassistant.const import STATE_UNAVAILABLE
 from custom_components.midea_dehumidifier.humidifier import ATTR_CURRRENT_HUMIDITY
 
 _LOGGER = logging.getLogger(__name__)
@@ -51,6 +52,8 @@ class MideaDehumidifierSensor(Entity):
         self._humidifier_entity_id = 'humidifier.midea_dehumidifier_' + targetDevice['id']
 
         self._state = None
+        self._available = True
+        #sets _state and _available from the humidifier entity
         self.__updateStateFromHumidifierEntity()
 
 
@@ -58,6 +61,8 @@ class MideaDehumidifierSensor(Entity):
         """Update state from current_humidity attribute of humidifier entity"""
         #hass.states.get is async friendly (ref. https://dev-docs.home-assistant.io/en/master/api/core.html#homeassistant.core.StateMachine)
         state = self._hass.states.get(self._humidifier_entity_id)
+        #follow the humidifier entity's reachability (it owns the device poll)
+        self._available = state is not None and state.state != STATE_UNAVAILABLE
         if state:
             _LOGGER.debug("state.attributes = %s", state.attributes)
         #ATTR_CURRRENT_HUMIDITY attribute may not exist when device is initializing...
@@ -97,6 +102,11 @@ class MideaDehumidifierSensor(Entity):
     def state(self):
         """Return the state of the sensor."""
         return self._state
+
+    @property
+    def available(self):
+        """Return True if the parent humidifier entity is available."""
+        return self._available
 
     async def async_update(self):
         """Update the state from the template."""

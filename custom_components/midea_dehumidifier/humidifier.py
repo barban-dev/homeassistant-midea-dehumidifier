@@ -171,7 +171,10 @@ class MideaDehumidifierDevice(HumidifierEntity):
         self._dryClothesSetSwitch = None
         self._upanddownSwing = None
         self._tankShow = False
-	    
+
+        #Reachability, updated by async_update()
+        self._available = True
+
         self._device_class = HumidifierDeviceClass.DEHUMIDIFIER
 
         ##Get appliance's status to set initial values for the device
@@ -209,6 +212,11 @@ class MideaDehumidifierDevice(HumidifierEntity):
         """Return the polling state."""
         #get device's status by polling it: Midea Web API lacks of notification capability
         return True
+
+    @property
+    def available(self):
+        """Return True if the appliance is reachable."""
+        return self._available
 
     @property
     def target_humidity(self):
@@ -378,19 +386,36 @@ class MideaDehumidifierDevice(HumidifierEntity):
 
 
     async def async_update(self):
-        """Retrieve latest state from the appliance and keep UI updated with respect to the updated status."""
-        _LOGGER.info("midea-dehumidifier: async_update called.")
-        
-        if self._client.security.access_token:
+        """Retrieve latest state and keep the entity available/unavailable accordingly."""
+        _LOGGER.debug("midea-dehumidifier: async_update called.")
+
+        if not self._client.security.access_token:
+            return
+
+        #Guard the whole read+refresh: the lib raises when the device is offline
+        try:
             _LOGGER.debug("midea-dehumidifier: sending get_device_status via Web API...")
             #res = self._client.get_device_status(self._device['id'])
             res = await self.hass.async_add_executor_job(self._client.get_device_status, self._device['id'])
-            if res == 1:
-                _LOGGER.info(self._device_status.toString())
+            if res == 1 and self._device_status is not None:
+                _LOGGER.debug("midea-dehumidifier: %s", self._device_status.toString())
                 #Refresh device status
                 self.__refresh_device_status()
+                #mark available only after a clean refresh
+                self.__set_available(True)
             else:
-                _LOGGER.error("midea-dehumidifier: get_device_status ERROR.")
+                self.__set_available(False, "get_device_status returned %s" % res)
+        except Exception as err:
+            self.__set_available(False, "get_device_status failed: %s" % err)
+
+
+    def __set_available(self, available, reason=None):
+        """Set reachability, logging only on offline<->online transitions."""
+        if available and not self._available:
+            _LOGGER.info("midea-dehumidifier: device %s is back online.", self._device['id'])
+        elif not available and self._available:
+            _LOGGER.warning("midea-dehumidifier: device %s is unavailable (%s).", self._device['id'], reason)
+        self._available = available
 
 
     def __refresh_device_status(self):
